@@ -8,7 +8,7 @@
 - [x] implement sort
 - [x] implement reverse sort
 - [ ] UI reflects sorting order
-NOT DONE - Given bootstrap library does NOT support Glyphicons i.e. unable to fetch icon images without use of external libraries
+* NOT DONE - Given bootstrap library does NOT support Glyphicons i.e. unable to fetch icon images without use of external libraries
 - [x]  defaults to ascending order on page load 
 
 ### 3. Implement Search
