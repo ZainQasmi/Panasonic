@@ -3,7 +3,7 @@
 ### 1. Construct Table
 
 * construct table using JSONobject variable
-Done
+- [ ] Done
 
 ### 2. Implement Sort
 
