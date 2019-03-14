@@ -3,27 +3,27 @@ let jsonObject = JSON.parse(document.currentScript.getAttribute("jsonObject"));
 $.makeTable = function(mydata) {
   let table = $('<table class="table" border=1>');
   let tHead = $("<thead>");
+  let tBody = $("<tbody>");
   let tblHeader = "<tr id=tableHeader>";
 
   for (let k in mydata[0]) {
-    kName = k[0].toUpperCase() + k.slice(1);
-    tblHeader += "<th id=" + k + ">" + kName + "</th>";
+    kTag = k[0].toUpperCase() + k.slice(1);
+    tblHeader += "<th id=" + k + ">" + kTag + "</th>";
   }
-  tblHeader += "</tr>";
 
+  tblHeader += "</tr>";
   $(tblHeader).appendTo(tHead);
   $(tHead).appendTo(table);
 
-  let tBody = $("<tbody>");
   $.each(mydata, function(index, value) {
     let TableRow = "<tr>";
     $.each(value, function(key, val) {
       TableRow += "<td>" + val + "</td>";
     });
-
     TableRow += "</tr>";
     $(TableRow).appendTo(tBody);
   });
+
   $(tBody).appendTo(table);
 
   return $(table);
