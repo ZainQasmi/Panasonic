@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  text-align: center
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+#TableDiv tr:hover {
+  background-color: #f1f1f1;
+}
