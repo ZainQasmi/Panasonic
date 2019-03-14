@@ -2,7 +2,7 @@ var jsonObject = [{"id":"1","name":"Tiger Nixon","position":"System Architect","
 
 $.makeTable = function(mydata) {
   var table = $("<table border=1>");
-  var tblHeader = "<tr>";
+  var tblHeader = "<tr id=tableHeader>";
 
   for (var k in mydata[0]) {
     tblHeader += "<th id=" + k + ">" + k + "</th>";
@@ -29,8 +29,8 @@ var table = $.makeTable(jsonObject);
 $(table).appendTo("#TableDiv");
 
 $("#id, #name, #position, #salary, #start_date, #office, #extn")
-// $("#salary")
-// $("#id")
+  // $("#salary")
+  // $("#id")
   .each(function() {
     $(this).click(function() {
       var table = $(this)
@@ -47,9 +47,7 @@ $("#id, #name, #position, #salary, #start_date, #office, #extn")
       for (var i = 0; i < rows.length; i++) {
         table.append(rows[i]);
       }
-    
     });
-  
   });
 
 function comparer(index) {
@@ -57,12 +55,12 @@ function comparer(index) {
     var valA = getCellValue(a, index);
     var valB = getCellValue(b, index);
 
-    if (valA[0] === '$' && valB[0] === '$') {
+    if (valA[0] === "$" && valB[0] === "$") {
       // using regular expression to replace all instances of ','
-      valA = valA.replace(/,/g,'').slice(1)
-      valB = valB.replace(/,/g,'').slice(1)
+      valA = valA.replace(/,/g, "").slice(1);
+      valB = valB.replace(/,/g, "").slice(1);
     }
-    
+
     return $.isNumeric(valA) && $.isNumeric(valB)
       ? valA - valB
       : valA.toString().localeCompare(valB);
@@ -74,4 +72,26 @@ function getCellValue(row, index) {
     .children("td")
     .eq(index)
     .text();
+}
+
+function searchTable() {
+  var input, filter, found, table, tr, td, i, j;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("TableDiv");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td");
+    for (j = 0; j < td.length; j++) {
+      if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+        found = true;
+      }
+    }
+    if (found) {
+      tr[i].style.display = "";
+      found = false;
+    } else if (!tr[i].id.match("^tableHeader")) {
+      tr[i].style.display = "none";
+    }
+  }
 }
