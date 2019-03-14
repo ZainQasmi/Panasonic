@@ -7,8 +7,7 @@
 
 - [x] implement sort
 - [x] implement reverse sort
-- [ ] UI reflects sorting order - Given bootstrap library does NOT support Glyphicons i.e. icons/images. Implemented in DataTable branch WITH USE of an external library.
-
+- [ ] UI reflects sorting order - Given bootstrap library does NOT support Glyphicons i.e. icons/images. Implemented in [DataTable branch](https://github.com/ZainQasmi/Panasonic/tree/DataTable) WITH USE of an external library.
 - [x]  defaults to ascending order on page load 
 
 ### 3. Implement Search
