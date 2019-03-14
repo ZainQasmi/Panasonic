@@ -29,6 +29,8 @@ var table = $.makeTable(jsonObject);
 $(table).appendTo("#TableDiv");
 
 $("#id, #name, #position, #salary, #start_date, #office, #extn")
+// $("#salary")
+// $("#id")
   .each(function() {
     $(this).click(function() {
       var table = $(this)
@@ -48,13 +50,19 @@ $("#id, #name, #position, #salary, #start_date, #office, #extn")
     
     });
   
-  })
-  
+  });
 
 function comparer(index) {
   return function(a, b) {
-    var valA = getCellValue(a, index),
-      valB = getCellValue(b, index);
+    var valA = getCellValue(a, index);
+    var valB = getCellValue(b, index);
+
+    if (valA[0] === '$' && valB[0] === '$') {
+      // using regular expression to replace all instances of ','
+      valA = valA.replace(/,/g,'').slice(1)
+      valB = valB.replace(/,/g,'').slice(1)
+    }
+    
     return $.isNumeric(valA) && $.isNumeric(valB)
       ? valA - valB
       : valA.toString().localeCompare(valB);
